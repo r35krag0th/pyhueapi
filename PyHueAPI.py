@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import requests,json
+import requests, json, sys
 from time import sleep
 
 class HueAPIBase(object):
@@ -94,6 +94,11 @@ class Light(HueAPIBase):
     def _print(self):
         print "id=%d\tname=%20s\ton?=%s\t[ bri=%03d\thue=%05d\tsat=%03d ]\t[ xy=%s\tct=%s ]" % (self.id, self.name, self.state.on, self.state.brightness, self.state.hue, self.state.saturation, self.state.xy, self.state.ct)
     
+    def _print_md(self):
+        #| 1  | **Yes** | 79   | 33863 | 236 | 0.6271, 0.3297 | 154 |
+
+        print "|%2s|%7s|%3s|%5s|%3s|%15s|%3s|" % (self.id, '**Yes**' if self.state.on else 'No', self.state.brightness, self.state.hue, self.state.saturation, self.state.xy, self.state.ct)
+        
     def setHue(self, newHue):
         assert(newHue >= 0)
         assert(newHue <= 65535)
@@ -304,10 +309,12 @@ if __name__ == '__main__':
     allLights = a.getAll()
     for tmp in allLights:
         light = a.get(tmp)
-        light._print()
-        light.setColor(0.4500, 0.2000)
+        light._print_md()
+        #light.setColor(0.4500, 0.2000)
         #sleep(1)
         
+    sys.exit(1)
+    
     print "*" * 80
     print ""
     print ""
