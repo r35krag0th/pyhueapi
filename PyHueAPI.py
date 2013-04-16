@@ -95,10 +95,21 @@ class Light(HueAPIBase):
         print "id=%d\tname=%20s\ton?=%s\t[ bri=%03d\thue=%05d\tsat=%03d ]\t[ xy=%s\tct=%s ]" % (self.id, self.name, self.state.on, self.state.brightness, self.state.hue, self.state.saturation, self.state.xy, self.state.ct)
     
     def _print_md(self):
-        #| 1  | **Yes** | 79   | 33863 | 236 | 0.6271, 0.3297 | 154 |
-
         print "|%2s|%7s|%3s|%5s|%3s|%15s|%3s|" % (self.id, '**Yes**' if self.state.on else 'No', self.state.brightness, self.state.hue, self.state.saturation, self.state.xy, self.state.ct)
+    
+    def _print_preset(self):
+        #print {'id': self.id, 'on': self.state.on, 'bri': self.state.brightness, 'sat': self.state.saturation, 'xy':self.state.xy, 'ct':self.state.ct, 'colormode':self.state.colormode}
+        output =  {'on': self.state.on, 'bri': self.state.brightness}
+        if self.state.colormode == 'xy':
+            output['xy'] = self.state.xy
+        elif self.state.colormode == 'ct':
+            output['ct'] = self.state.ct
+        elif self.state.colormode == 'hs':
+            output['hue'] = self.state.hue
+            output['sat'] = self.state.saturation
         
+        print output
+    
     def setHue(self, newHue):
         assert(newHue >= 0)
         assert(newHue <= 65535)
@@ -119,6 +130,14 @@ class Light(HueAPIBase):
         
         self.state.brightness = newBrightness
     
+    def setSaturation(self, newSaturation):
+        assert(newSaturation > 0 and newSaturation <= 255)
+        
+        print ">>> Setting saturation to %d" % newSaturation
+        
+        self.api_put(tokens=[self.id, 'state'], data={'sat': newSaturation})
+        self.state.saturation = newSaturation
+    
     def setColor(self, newX, newY):
         assert(newX > 0 and newX < 1)
         assert(newY > 0 and newY < 1)
@@ -129,7 +148,15 @@ class Light(HueAPIBase):
         self.api_put(tokens=[self.id, 'state'], data={'xy': newValue})
         
         self.state.xy = newValue
-        
+    
+    def setCt(self, newCt):
+        self.api_put(tokens=[self.id, 'state'])
+    
+    def bulkSetState(self, rawData):
+        #print "Pushing payload for LampId=%d\n%s" % (self.id, rawData)
+        self.api_put(tokens=[self.id, 'state'], data=rawData)
+        ## SYNC HERE
+    
 class LightState(object):
     on = False
     brightness = 0
@@ -308,66 +335,10 @@ if __name__ == '__main__':
     a = Lights()
     allLights = a.getAll()
     for tmp in allLights:
+        print "%s:" % tmp,
         light = a.get(tmp)
-        light._print_md()
+        light._print_preset()
         #light.setColor(0.4500, 0.2000)
         #sleep(1)
         
-    sys.exit(1)
-    
-    print "*" * 80
-    print ""
-    print ""
-    
-    b = a.get(1)
-    c = a.get(2)
-    d = a.get(3)
-    
-    b._print()
-    b.setBrightness(255)
-    
-    c._print()
-    c.setBrightness(255)
-    
-    d._print()
-    d.setBrightness(255)
-    
-    sleep(2)
-    
-    # TEST
-    #for i in range(0,255):
-    #    print i
-    #    b.setBrightness(i)
-    #    c.setBrightness(i)
-    #    d.setBrightness(i)
-    #    sleep(0.05)
-    
-    cycleColors = [
-        [0.4500, 0.5000],
-        [0.4500, 0.4500],
-        [0.4500, 0.4000],
-        [0.4500, 0.3500],
-        [0.4500, 0.3200],
-        [0.4500, 0.3000],
-        [0.4500, 0.2500],
-        [0.4500, 0.2000],
-        [0.4500, 0.1500],
-        [0.4500, 0.1000],
-        [0.4500, 0.0800],
-        [0.4500, 0.0600],
-        [0.4500, 0.0400],
-        [0.4500, 0.0200],
-    ]
-    for i in cycleColors:
-        print i
-        b.setColor(i[0], i[1])
-        c.setColor(i[0], i[1])
-        d.setColor(i[0], i[1])
-        sleep(1)
-        
-    for i in cycleColors:
-        print i
-        b.setColor(i[1], i[0])
-        c.setColor(i[1], i[0])
-        d.setColor(i[1], i[0])
-        sleep(1)
+    sys.exit(0)
