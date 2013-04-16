@@ -21,22 +21,28 @@ class HueAPIBase(object):
         return 'http://%s/api/%s/%s/%s' % (self.targetBridge, self.targetUser, self.apiName, '/'.join(tokens) )
     
     ## Wrapped core methods
+    def decide_output(self, someResponse):
+        if hasattr(someResponse.json, '__call__'):
+            return someResponse.json()
+        else:
+            return someResponse.json    
+    
     def api_get(self, tokens=[], data={}):
         response = requests.get(self.getUrl(tokens), data=json.dumps(data))
-        return response.json
+        return self.decide_output(response)
     
     def api_put(self, tokens=[], data={}):
         #print "Tokens: %s" % tokens
         response = requests.put(self.getUrl(tokens), data=json.dumps(data))
-        return response.json
+        return self.decide_output(response)
         
     def api_post(self, tokens=[], data={}):
         response = requests.post(self.getUrl(tokens), data=json.dumps(data))
-        return response.json
+        return self.decide_output(response)
         
     def api_delete(self, tokens=[], data={}):
         response = requests.delete(self.getUrl(tokens), data=json.dumps(data))
-        return response.json
+        return self.decide_output(response)
 
 class Lights(HueAPIBase):
     apiName = 'lights'
@@ -334,6 +340,7 @@ if __name__ == '__main__':
     
     a = Lights()
     allLights = a.getAll()
+    print allLights
     for tmp in allLights:
         print "%s:" % tmp,
         light = a.get(tmp)
