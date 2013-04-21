@@ -62,7 +62,7 @@ if __name__ == '__main__':
     
     lights = PyHueAPI.Lights()
     
-    print "Computing Deltas..."
+    #print "Computing Deltas..."
     for i in range(1,10):
         """Compute all the deltas"""
         # Deltas
@@ -82,22 +82,22 @@ if __name__ == '__main__':
         tmp = lights.get(i)
         tmp.bulkSetState({'xy': [currentValues[i][0], currentValues[i][1]], 'bri': currentValues[i][2]})
                 
-    print deltas
-    print ""
-    print ""
+    #print deltas
+    #print ""
+    #print ""
         
-    print "Fading..."
+    #print "Fading..."
     for i in range(1, totalCycles):
         sleep(napBetweenCycles)
-        print ""
-        print "Cycle %d of %d" % (i, totalCycles)
+        #print ""
+        #print "Cycle %d of %d" % (i, totalCycles)
         
         for j in range(1,10):
             newX = currentValues[j][0] + deltas[j]['xi']
             newY = currentValues[j][1] + deltas[j]['yi']
             newB = currentValues[j][2] + deltas[j]['bi']
             
-            print "\tLight %d (x=%0.4f, y=%0.4f, b=%0.4f)" % (j, newX, newY, newB)
+            #print "\tLight %d (x=%0.4f, y=%0.4f, b=%0.4f)" % (j, newX, newY, newB)
             currentValues[j][0] = newX
             currentValues[j][1] = newY
             currentValues[j][2] = newB
