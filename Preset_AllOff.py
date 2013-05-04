@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import PyHueAPI
+from time import sleep
 
 if __name__ == '__main__':
     preset = {
@@ -13,10 +14,16 @@ if __name__ == '__main__':
         6: {'on': False},
         9: {'on': False},
         8: {'on': False},
+        10: {'on': False},
+        11: {'on': False},
+        12: {'on': False},
+        13: {'on': False},
+        14: {'on': False},
+        
     }
     
     lights = PyHueAPI.Lights()
-    for i in range(1,10):
+    for i in range(1,15):
         tmp = lights.get(i)
         data = preset[i]
         

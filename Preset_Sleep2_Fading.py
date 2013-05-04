@@ -8,12 +8,22 @@ if __name__ == '__main__':
         1: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         3: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         2: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
-        5: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        7: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        8: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        9: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+
+        13: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        14: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+
+        10: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+
         4: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
-        7: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 238},
+        5: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         6: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
-        9: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 238},
-        8: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 238},    
+        12: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        11: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+
+
     }
     
     endPreset = {
@@ -26,6 +36,12 @@ if __name__ == '__main__':
         6: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
         9: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
         8: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        10: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        11: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        12: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        13: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        14: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 0},
+        
     }
     
     deltas = {
@@ -37,7 +53,12 @@ if __name__ == '__main__':
         6: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
         7: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
         8: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
-        9: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0}
+        9: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        10: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        11: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        12: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        13: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        14: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
     }
     
     currentValues = {
@@ -49,7 +70,12 @@ if __name__ == '__main__':
         6: [0, 0, 0],
         7: [0, 0, 0],
         8: [0, 0, 0],
-        9: [0, 0, 0]
+        9: [0, 0, 0],
+        10: [0, 0, 0],
+        11: [0, 0, 0],
+        12: [0, 0, 0],
+        13: [0, 0, 0],
+        14: [0, 0, 0],        
     }
     
     # In MINUTES
@@ -63,7 +89,7 @@ if __name__ == '__main__':
     lights = PyHueAPI.Lights()
     
     #print "Computing Deltas..."
-    for i in range(1,10):
+    for i in range(1,15):
         """Compute all the deltas"""
         # Deltas
         deltas[i]['x'] = endPreset[i]['xy'][0] - startPreset[i]['xy'][0]
@@ -87,12 +113,12 @@ if __name__ == '__main__':
     #print ""
         
     #print "Fading..."
-    for i in range(1, totalCycles):
+    for i in range(1, totalCycles+1):
         sleep(napBetweenCycles)
         #print ""
         #print "Cycle %d of %d" % (i, totalCycles)
         
-        for j in range(1,10):
+        for j in range(1,15):
             newX = currentValues[j][0] + deltas[j]['xi']
             newY = currentValues[j][1] + deltas[j]['yi']
             newB = currentValues[j][2] + deltas[j]['bi']

@@ -162,6 +162,7 @@ class Light(HueAPIBase):
         #print "Pushing payload for LampId=%d\n%s" % (self.id, rawData)
         self.api_put(tokens=[self.id, 'state'], data=rawData)
         ## SYNC HERE
+        sleep(0.02)
     
 class LightState(object):
     on = False
