@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import PyHueAPI
+import PyHueAPI, os, sys
 
 if __name__ == '__main__':
     preset = {
@@ -25,6 +25,9 @@ if __name__ == '__main__':
         12: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
         11: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},
     }
+    
+    # TRAP
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
     
     lights = PyHueAPI.Lights()
     for i in range(1,15):

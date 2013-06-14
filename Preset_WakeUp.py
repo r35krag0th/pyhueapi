@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import PyHueAPI
+import PyHueAPI, os, sys
 
 if __name__ == '__main__':
     preset = {
@@ -13,12 +13,19 @@ if __name__ == '__main__':
         6: {'on': True, 'bri': 236, 'ct': 156},
         9: {'on': True, 'bri': 236, 'ct': 156},
         8: {'on': True, 'bri': 236, 'ct': 156},
-        
+        10: {'on': False},
+        11: {'on': False},
+        12: {'on': False},
+        13: {'on': False},
+        14: {'on': False},
     }
-    
+
+    # TRAP
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
+
     lights = PyHueAPI.Lights()
-    for i in range(1,10):
+    for i in range(1,15):
         tmp = lights.get(i)
         data = preset[i]
-        
+
         tmp.bulkSetState(data)

@@ -1,10 +1,13 @@
 #!/usr/bin/python
 
-import PyHueAPI
+import PyHueAPI, os, sys
 from time import sleep
 
 if __name__ == '__main__':
     showOutput = False
+    
+    # TRAP
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
     
     startPreset = {
         # RED

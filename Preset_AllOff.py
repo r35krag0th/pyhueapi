@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import PyHueAPI
+import PyHueAPI, os, sys
 from time import sleep
 
 if __name__ == '__main__':
@@ -21,6 +21,9 @@ if __name__ == '__main__':
         14: {'on': False},
         
     }
+    
+    # TRAP
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
     
     lights = PyHueAPI.Lights()
     for i in range(1,15):

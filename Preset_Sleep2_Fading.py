@@ -1,9 +1,13 @@
 #!/usr/bin/python
 
-import PyHueAPI
+import PyHueAPI, os, sys
 from time import sleep
 
 if __name__ == '__main__':
+    
+    # TRAP
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
+    
     startPreset = {
         1: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         3: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
