@@ -3,7 +3,7 @@
 import PyHueAPI, os, sys
 
 if __name__ == '__main__':
-    overall_brightness = 80
+    overall_brightness = 210
     color_temperature = 154
 
     preset = {
@@ -11,14 +11,14 @@ if __name__ == '__main__':
         3: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
 
         # Lamp W
-        5: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        4: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        6: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
+        5: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        4: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        6: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
 
         # Lamp E
-        8: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        7: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        9: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
+        8: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        7: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        9: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
     }
 
     # TRAP

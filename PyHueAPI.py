@@ -159,6 +159,14 @@ class Light(HueAPIBase):
         self.api_put(tokens=[self.id, 'state'])
 
     def bulkSetState(self, rawData):
+        if 'on' in rawData.keys() and not self.state.on == rawData['on']:
+            self.api_put(tokens=[self.id, 'state'], data={'on':rawData['on']})
+
+        # Make it look nicer
+        if not 'transitiontime' in rawData.keys():
+            # Default to 5 seconds
+            rawData['transitiontime'] = 10 * 5
+
         self.api_put(tokens=[self.id, 'state'], data=rawData)
         self.state.bulkset(rawData)
 

@@ -4,26 +4,26 @@ import PyHueAPI, os, sys
 
 if __name__ == '__main__':
     preset = {
-        1: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        2: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        3: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
+        1: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        2: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        3: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
         
         ## LAMP
-        4: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        5: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        6: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
+        4: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        5: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        6: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
         
         ## LAMP
-        7: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        8: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        9: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
+        7: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        8: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        9: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
         
         ## Ceiling
-        10: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        11: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        12: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        13: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
-        14: {'on': True, 'bri': 255, 'ct': 233, 'colormode': 'ct'},
+        10: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        11: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        12: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        13: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
+        14: {'on': True, 'bri': 255, 'ct': 154, 'colormode': 'ct'},
     }
     
     # TRAP

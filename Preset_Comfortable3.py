@@ -4,9 +4,9 @@ import PyHueAPI, os, sys
 
 if __name__ == '__main__':
     preset = {
-        1: {'on': True, 'bri': 170, 'ct': 154},
-        2: {'on': True, 'bri': 254, 'ct': 154},
-        3: {'on': True, 'bri': 170, 'ct': 154},
+        1: {'on': True, 'bri': 218, 'ct': 154},
+        2: {'on': False, 'bri': 254, 'ct': 154},
+        3: {'on': True, 'bri': 226, 'ct': 154},
 
         # Lamp W
         4: {'on': True, 'bri': 100, 'ct': 154},
@@ -19,13 +19,13 @@ if __name__ == '__main__':
         9: {'on': True, 'bri': 100, 'ct': 154},
 
         # Window Seat
-        10: {'on': True, 'bri': 150, 'ct': 154},
+        10: {'on': False, 'bri': 198, 'ct': 154},
 
         # Cans
-        11: {'on': True,  'bri': 150, 'ct': 154},
-        12: {'on': True,  'bri': 150, 'ct': 154},
-        13: {'on': True,  'bri': 150, 'ct': 154},
-        14: {'on': True,  'bri': 50, 'ct': 154},
+        11: {'on': False,  'bri': 199, 'ct': 154},
+        12: {'on': False,  'bri': 199, 'ct': 154},
+        13: {'on': False,  'bri': 199, 'ct': 154},
+        14: {'on': False,  'bri': 199, 'ct': 154},
     }
 
     # TRAP
