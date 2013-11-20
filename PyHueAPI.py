@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import requests, json, sys
+import requests, json, sys, os
 from time import sleep
 
 class HueAPIBase(object):
@@ -336,6 +336,23 @@ class Portal(HueAPIBase):
     def __init__(self):
         super(Portal, self).__init__()
         print "Initialized Portal"
+
+def make_changes(preset):
+    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
+
+    lights = Lights()
+    for i in preset.keys():
+        tmp = lights.get(i)
+        data = preset[i]
+
+        tmp.bulkSetState(data)
+
+def compute_brightness_from_percentage(target_brightness_percent):
+    if target_brightness_percent > 100 or target_brightness_percent < 0:
+        print "You're bad at inputs.  0 < x < 100"
+        sys.exit(1)
+
+    return int(255 * (target_brightness_percent / 100.0))
 
 if __name__ == '__main__':
     print "Main..."
