@@ -394,7 +394,9 @@ if __name__ == '__main__':
 
     a = Lights()
     allLights = a.getAll()
-    print allLights
+    for light in allLights.iteritems():
+        print "%s is %s" % (light[0], light[1]['name'])
+
     for tmp in allLights:
         print "%s:" % tmp,
         light = a.get(tmp)
