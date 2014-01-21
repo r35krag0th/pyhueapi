@@ -35,8 +35,8 @@ if __name__ == '__main__':
 
         # Lamp W
         12: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        13: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
-        14: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
+        # 13: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
+        # 14: {'on': False, 'bri': overall_brightness, 'ct': color_temperature},
     }
 
     # Push the changes to all the lights
