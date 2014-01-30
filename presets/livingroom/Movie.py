@@ -30,6 +30,7 @@ if __name__ == '__main__':
     preset = {
         13: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
         14: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        11: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
     }
 
     # Push the changes to all the lights

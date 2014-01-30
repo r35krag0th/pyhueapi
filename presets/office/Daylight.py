@@ -31,7 +31,6 @@ if __name__ == '__main__':
         # Lamp E
         2: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
         10: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
-        11: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
 
         # Lamp W
         12: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
