@@ -17,7 +17,7 @@ if __name__ == '__main__':
     target_brightness_percent = 80
 
     # Target color temperature; 154 is a nice daylight color
-    color_temperature = 154
+    color_temperature = 340
 
     # If we're overriding the default brightness here
     if len(sys.argv) > 1:
@@ -28,9 +28,12 @@ if __name__ == '__main__':
 
     # The preset map for changes to be made
     preset = {
+        2: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        10: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        11: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
+        12: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
         13: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
         14: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
-        11: {'on': True, 'bri': overall_brightness, 'ct': color_temperature},
     }
 
     # Push the changes to all the lights
