@@ -4,7 +4,7 @@ import requests, json, sys, os
 from time import sleep
 
 class HueAPIBase(object):
-    targetBridge = '10.0.42.18'
+    targetBridge = 'hue.r35.net'
     targetUser   = 'newdeveloper'
 
     #def __init__(self):
@@ -106,15 +106,23 @@ class Light(HueAPIBase):
     def _print_preset(self):
         #print {'id': self.id, 'on': self.state.on, 'bri': self.state.brightness, 'sat': self.state.saturation, 'xy':self.state.xy, 'ct':self.state.ct, 'colormode':self.state.colormode}
         output =  {'on': self.state.on, 'bri': self.state.brightness}
+        name_color = 32 if self.state.on else 37
+        print "\033[37m%30s:\033[0m" % ('(#%d) \033[%sm%s' % (self.id, name_color, self.name)),
+        value_color = 32 if self.state.on else 37
+
         if self.state.colormode == 'xy':
             output['xy'] = self.state.xy
+            print '\033[36mxy=\033[%dm%s' % (value_color, self.state.xy),
         elif self.state.colormode == 'ct':
-            output['ct'] = self.state.ct
+            # output['ct'] = self.state.ct
+            print '\033[34mct=\033[%dm%d' % (value_color, self.state.ct),
         elif self.state.colormode == 'hs':
+            print '\033[35mhue=\033[%dm%d \033[35msaturation=%s' % (value_color, self.state.hue, value_color, self.state.saturation),
             output['hue'] = self.state.hue
             output['sat'] = self.state.saturation
 
-        print output
+        print '\033[33mbrightness=\033[%dm%d' % (value_color, self.state.brightness)
+
 
     def setHue(self, newHue):
         assert(newHue >= 0)
@@ -394,11 +402,10 @@ if __name__ == '__main__':
 
     a = Lights()
     allLights = a.getAll()
-    for light in allLights.iteritems():
-        print "%s is %s" % (light[0], light[1]['name'])
+    # for light in allLights.iteritems():
+    #     print "%s is %s" % (light[0], light[1]['name'])
 
     for tmp in allLights:
-        print "%s:" % tmp,
         light = a.get(tmp)
         light._print_preset()
         #light.setColor(0.4500, 0.2000)
