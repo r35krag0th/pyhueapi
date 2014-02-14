@@ -4,6 +4,6 @@ pkill -f 'pyhueapi/presets'
 Returned=$?
 if [ $Returned -eq 0 ]; then
 	echo "OK"
-else:
+else
 	echo "FAIL"
 fi
