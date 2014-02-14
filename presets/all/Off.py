@@ -1,32 +1,36 @@
 #!/usr/bin/python
+import os, sys
 
-import PyHueAPI, os, sys
-from time import sleep
+# If you're running from the app root this will make it work
+sys.path.append(os.path.abspath(os.path.join(os.path.curdir, '..', '..')))
+
+# If you're running this from anywhere else this will make it work
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..', '..')))
+
+import pyhueapi
+from pyhueapi.preset import Preset
 
 if __name__ == '__main__':
-    preset = {
-        1: {'on': False},
-        3: {'on': False},
-        2: {'on': False},
-        5: {'on': False},
-        4: {'on': False},
-        7: {'on': False},
-        6: {'on': False},
-        9: {'on': False},
-        8: {'on': False},
-        10: {'on': False},
-        11: {'on': False},
-        12: {'on': False},
-        13: {'on': False},
-        14: {'on': False}
-    }
-
-    # TRAP
-    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
-
-    lights = PyHueAPI.Lights()
-    for i in range(1,15):
-        tmp = lights.get(i)
-        data = preset[i]
-
-        tmp.bulkSetState(data)
+    target_preset = Preset()
+    
+    # CT color mode
+    color_temperature = 340
+    
+    # Percentage
+    target_brightness_percent = 100
+    
+    # Parse any command-line arguments.
+    target_preset.parse_arguments()
+    
+    # Define the preset
+    final_preset = []
+    for light_id in range(1,15):
+        final_preset.append({
+            'id': light_id,
+            'on': False,
+            'bri': target_brightness_percent,
+            'ct': color_temperature
+        })
+    target_preset.define_preset(final_preset)
+    
+    target_preset.execute()
