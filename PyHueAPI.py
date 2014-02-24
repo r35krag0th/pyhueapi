@@ -405,10 +405,17 @@ if __name__ == '__main__':
     # for light in allLights.iteritems():
     #     print "%s is %s" % (light[0], light[1]['name'])
 
+    collected_lights = {}
+
     for tmp in allLights:
         light = a.get(tmp)
-        light._print_preset()
-        #light.setColor(0.4500, 0.2000)
-        #sleep(1)
+        # light._print_preset()
+        collected_lights['light_%02d' % light.id] = light
+
+    collected_lights_keys = collected_lights.keys()
+    collected_lights_keys.sort()
+    for light_id in collected_lights_keys:
+        # print light_id
+        collected_lights[light_id]._print_preset()
 
     sys.exit(0)

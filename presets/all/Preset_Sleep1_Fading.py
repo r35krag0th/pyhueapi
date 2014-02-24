@@ -1,37 +1,48 @@
 #!/usr/bin/python
 
-import PyHueAPI, os, sys
+import sys, os
+
+# If you're running from the app root this will make it work
+sys.path.append(os.path.abspath(os.path.join(os.path.curdir, '..', '..')))
+
+# If you're running this from anywhere else this will make it work
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..')))
+
+import PyHueAPI
 from time import sleep
 
 if __name__ == '__main__':
     showOutput = False
-    
+
     # TRAP
     if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
-    
+
     startPreset = {
         # RED
         1: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         3: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
-        2: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         7: {'on': True, 'xy': [0.2432, 0.1903], 'bri': 157},
         8: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
         9: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},
 
         13: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         14: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        15: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        16: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        17: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
 
-        10: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
-        
         # BLUE
         4: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
         5: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},
         6: {'on': True, 'xy': [0.2432, 0.1903], 'bri': 157},
-        
+
+        2: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
+        10: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
         12: {'on': True, 'xy': [0.2643, 0.1646], 'bri': 147},
-        11: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},    
+        11: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},
+        15: {'on': True, 'xy': [0.3196, 0.1852], 'bri': 145},
     }
-    
+
     endPreset = {
         1: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         3: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
@@ -42,6 +53,9 @@ if __name__ == '__main__':
 
         13: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         14: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        15: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        16: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
+        17: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
 
         10: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
 
@@ -51,7 +65,7 @@ if __name__ == '__main__':
         12: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
         11: {'on': True, 'xy': [0.6271, 0.3297], 'bri': 239},
     }
-    
+
     deltas = {
         1: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
         2: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
@@ -67,8 +81,11 @@ if __name__ == '__main__':
         12: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
         13: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
         14: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        15: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        16: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
+        17: {'x': 0, 'y': 0, 'xi': 0, 'yi': 0, 'b': 0, 'bi': 0},
     }
-    
+
     currentValues = {
         1: [0, 0, 0],
         2: [0, 0, 0],
@@ -83,32 +100,35 @@ if __name__ == '__main__':
         11: [0, 0, 0],
         12: [0, 0, 0],
         13: [0, 0, 0],
-        14: [0, 0, 0],        
+        14: [0, 0, 0],
+        15: [0, 0, 0],
+        16: [0, 0, 0],
+        17: [0, 0, 0],
     }
 
-    
+
     # In MINUTES
     fadeLength = 30
     timesPerMinute = 4
-    
+
     ### DRAGONS
     totalCycles = fadeLength * timesPerMinute
     napBetweenCycles = 60 / timesPerMinute
-    
+
     if showOutput:
         print "Total Cycles: %d" % totalCycles
         print "Delay: %fs" % napBetweenCycles
-    
+
     lights = PyHueAPI.Lights()
-    
+
     #print "Computing Deltas..."
-    for i in range(1,15):
+    for i in range(1,18):
         """Compute all the deltas"""
         # Deltas
         deltas[i]['x'] = endPreset[i]['xy'][0] - startPreset[i]['xy'][0]
         deltas[i]['y'] = endPreset[i]['xy'][1] - startPreset[i]['xy'][1]
         deltas[i]['b'] = endPreset[i]['bri'] - startPreset[i]['bri']
-        
+
         # Deltas per interval
         deltas[i]['xi'] = (deltas[i]['x'] / fadeLength) / timesPerMinute
         deltas[i]['yi'] = (deltas[i]['y'] / fadeLength) / timesPerMinute
@@ -120,29 +140,29 @@ if __name__ == '__main__':
             ]
         tmp = lights.get(i)
         tmp.bulkSetState({'xy': [currentValues[i][0], currentValues[i][1]], 'bri': currentValues[i][2]})
-                
+
     #print deltas
     #print ""
     #print ""
-        
+
     #print "Fading..."
     for i in range(1, totalCycles+1):
         if showOutput: print "Cycle %d/%d" % (i, totalCycles)
         sleep(napBetweenCycles)
         #print ""
         #print "Cycle %d of %d" % (i, totalCycles)
-        
+
         for j in range(1,15):
             if showOutput: print "\tL%d" % j
             newX = currentValues[j][0] + deltas[j]['xi']
             newY = currentValues[j][1] + deltas[j]['yi']
             newB = currentValues[j][2] + deltas[j]['bi']
-            
+
             if showOutput: print "\tLight %d (x=%0.4f, y=%0.4f, b=%0.4f)" % (j, newX, newY, newB)
             currentValues[j][0] = newX
             currentValues[j][1] = newY
             currentValues[j][2] = newB
-            
+
             tmp = lights.get(j)
             tmp.bulkSetState({'xy': [currentValues[j][0], currentValues[j][1]], 'bri': currentValues[j][2]})
             sleep(0.02)

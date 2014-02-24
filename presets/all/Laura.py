@@ -12,19 +12,19 @@ from pyhueapi.preset import Preset
 
 if __name__ == '__main__':
     target_preset = Preset()
-    
+
     # X,Y Color Mode
     xy_color = [0.2404, 0.0816]
-    
+
     # Percentage
     target_brightness_percent = 100
-    
+
     # Parse any command-line arguments.
     target_preset.parse_arguments()
-    
+
     # Define the preset
     final_preset = []
-    for light_id in [1, 3, 4, 5, 6, 7, 8, 9]:
+    for light_id in range(1,18):
         final_preset.append({
             'id': light_id,
             'on': True,
@@ -32,5 +32,5 @@ if __name__ == '__main__':
             'xy': xy_color,
         })
     target_preset.define_preset(final_preset)
-    
+
     target_preset.execute()
