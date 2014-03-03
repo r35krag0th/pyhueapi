@@ -2,9 +2,9 @@ import os, sys
 from light import Light
 from lights import Lights
 
-def make_changes(preset):
+def make_changes(preset, force=False):
     # Better handle this.
-    if (os.path.exists('/tmp/pyhueapi.disable')): sys.exit(0)
+    if (os.path.exists('/tmp/pyhueapi.disable') and not force): sys.exit(0)
 
     lights = Lights()
     for i in preset:
