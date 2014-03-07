@@ -25,7 +25,7 @@ class Light(HueAPIBase):
         self.swVersion = jsonData['swversion']
         self.pointSymbol = jsonData['pointsymbol']
 
-    def isOn(self):
+    def is_on(self):
         return self.state.on == True
 
     def _print(self):

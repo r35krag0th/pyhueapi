@@ -9,8 +9,16 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..',
 
 import pyhueapi
 from pyhueapi.preset import Preset
+from pyhueapi.light import Light
+from pyhueapi.lights import Lights
+
 
 if __name__ == '__main__':
+    lights = Lights()
+    light_strip = lights.get(17)
+    if not light_strip.is_on():
+        sys.exit(0)
+
     target_preset = Preset()
 
     # CT color mode
@@ -21,14 +29,6 @@ if __name__ == '__main__':
 
     # Parse any command-line arguments.
     target_preset.parse_arguments()
-
-    # [0.4369, 0.1879] to [0.4173, 0.5373]
-    # Define the preset
-    first_color =  [0.4369, 0.1879]  # ORANGE
-    second_color = [0.4369, 0.5373]   # BLUE
-
-    y_lower_limit = 0.1879
-    y_upper_limit = 0.5373
 
     color_choices = {}
     color_choices['red'] = [0.703, 0.296]

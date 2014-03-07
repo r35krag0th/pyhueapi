@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
-import sys, os
+import os, sys
 
 # If you're running from the app root this will make it work
 sys.path.append(os.path.abspath(os.path.join(os.path.curdir, '..', '..')))
 
 # If you're running this from anywhere else this will make it work
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..', '..')))
 
-import PyHueAPI
+import pyhueapi
+from pyhueapi.preset import Preset
 from time import sleep
 
 if __name__ == '__main__':
