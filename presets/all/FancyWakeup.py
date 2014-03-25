@@ -16,14 +16,13 @@ if __name__ == '__main__':
     middleFadeTime = 35
     topFadeTime = 40
 
-    bottomFadeTime *= 10
-    middleFadeTime *= 10
-    topFadeTime *= 10
+    bottomFadeTime *= 1000
+    middleFadeTime *= 1000
+    topFadeTime *= 1000
 
     preset0 = []
     for i in range(1,18):
-        print i
-        preset0.append({'id': i, 'on': True, 'bri': 10, 'xy': [0.674, 0.322]})
+        preset0.append({'id': i, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': 0})
 
     preset1 = [
         {'id': 1, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
@@ -133,5 +132,6 @@ if __name__ == '__main__':
 
         if i > 1:
             print "Sleeping..."
-            sleep((topFadeTime / 10) + 1)
+            # sleep((topFadeTime / 10) + 1)
+            sleep(45)
             # sleep(2)
