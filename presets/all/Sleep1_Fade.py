@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 import os, sys
 
 # If you're running from the app root this will make it work
