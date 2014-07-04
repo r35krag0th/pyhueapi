@@ -27,7 +27,6 @@ if __name__ == '__main__':
     target_preset.define_preset([
         {'id':  2, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
         {'id': 10, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 11, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
         {'id': 12, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
         {'id': 13, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
         {'id': 14, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},

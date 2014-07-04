@@ -30,7 +30,6 @@ if __name__ == '__main__':
         {'id': 10, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},    # Triple Lamp
         {'id': 12, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},    # Triple Lamp
 
-        {'id': 11, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},    # Living Room (Window)
         {'id': 13, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},    # Living Room (North Couch)
         {'id': 14, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},    # Living Room (South Couch)
 

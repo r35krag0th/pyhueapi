@@ -24,13 +24,7 @@ if __name__ == '__main__':
 
     # Define the preset
     target_preset.define_preset([
-        {'id':  2, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 10, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 12, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 13, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 14, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 15, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
-        {'id': 16, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
+        {'id': 11, 'on': False, 'bri': target_brightness_percent, 'ct': color_temperature},
     ])
 
     target_preset.execute()

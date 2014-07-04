@@ -29,7 +29,6 @@ if __name__ == '__main__':
     target_preset.define_preset([
         {'id':  2, 'on': True, 'bri': target_brightness_percent, 'xy': first_color},
         {'id': 10, 'on': True, 'bri': target_brightness_percent, 'xy': first_color},
-        {'id': 11, 'on': True, 'bri': target_brightness_percent, 'xy': second_color},
         {'id': 12, 'on': True, 'bri': target_brightness_percent, 'xy': first_color},
         {'id': 13, 'on': True, 'bri': target_brightness_percent, 'xy': second_color},
         {'id': 14, 'on': True, 'bri': target_brightness_percent, 'xy': second_color},
