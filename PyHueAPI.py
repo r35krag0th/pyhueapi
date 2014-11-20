@@ -117,7 +117,10 @@ class Light(HueAPIBase):
             # output['ct'] = self.state.ct
             print '\033[34mct=\033[%dm%d' % (value_color, self.state.ct),
         elif self.state.colormode == 'hs':
-            print '\033[35mhue=\033[%dm%d \033[35msaturation=%s' % (value_color, self.state.hue, value_color, self.state.saturation),
+            try:
+                print '\033[35mhue=\033[%dm%d \033[35msaturation=%s' % (value_color, self.state.hue, value_color, self.state.saturation),
+            except Exception, e:
+                pass
             output['hue'] = self.state.hue
             output['sat'] = self.state.saturation
 
