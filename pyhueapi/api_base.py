@@ -1,7 +1,7 @@
 import requests, json
 
 class HueAPIBase(object):
-    targetBridge = 'hue.r35.net'
+    targetBridge = 'hue.r35.private'
     targetUser   = 'newdeveloper'
 
     #def __init__(self):
