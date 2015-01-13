@@ -11,6 +11,7 @@ import pyhueapi
 from pyhueapi.preset import Preset
 from pyhueapi.light import Light
 from pyhueapi.lights import Lights
+from pyhueapi import irc_notification
 
 
 if __name__ == '__main__':
@@ -52,4 +53,5 @@ if __name__ == '__main__':
         {'id': 17, 'on': True, 'bri': target_brightness_percent, 'xy': preset_color_value, 'transitiontime': 300}, # 30 seconds
     ])
 
+    irc_notification.send_preset('Coffee Table', 'Living Room')
     target_preset.execute()

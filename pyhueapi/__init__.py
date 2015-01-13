@@ -4,3 +4,4 @@
 #import schedule, schedules, utils
 
 import preset
+import irc_notification

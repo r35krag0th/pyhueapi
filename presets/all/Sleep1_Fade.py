@@ -10,6 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..',
 import pyhueapi
 from pyhueapi.preset import Preset
 from time import sleep
+from pyhueapi import irc_notification
 
 if __name__ == '__main__':
     showOutput = False

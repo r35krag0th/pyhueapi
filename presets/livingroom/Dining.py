@@ -9,6 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..',
 
 import pyhueapi
 from pyhueapi.preset import Preset
+from pyhueapi import irc_notification
 
 if __name__ == '__main__':
     target_preset = Preset()
@@ -27,5 +28,7 @@ if __name__ == '__main__':
         {'id': 15, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
         {'id': 16, 'on': True, 'bri': target_brightness_percent, 'ct': color_temperature},
     ])
+
+    irc_notification.send_preset('Dining On', 'Living Room')
 
     target_preset.execute()
