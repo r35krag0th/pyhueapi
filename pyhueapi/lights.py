@@ -16,8 +16,11 @@ class Lights(HueAPIBase):
     def get(self, lightId=None):
         response = self.api_get(tokens=[lightId])
         #print response
-        light = Light(lightId, response)
-        return light
+        try:
+            light = Light(lightId, response)
+            return light
+        except Exception, e:
+            return None
 
     # Get the result of the last search for new lights
     def new(self):
