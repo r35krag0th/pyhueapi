@@ -99,7 +99,10 @@ class Preset(object):
             print "Presets are currently disabled.  Use -f to override."
             return
 
-        utils.make_changes(self.preset_details, self.forced_to_run)
+        try:
+            utils.make_changes(self.preset_details, self.forced_to_run)
+        except Exception, e:
+            pass
 
     def to_string(self):
         print 'HueControl Preset:'

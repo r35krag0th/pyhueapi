@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # Define the preset
     final_preset = []
-    for light_id in range(1,18):
+    for light_id in range(1, 25):
         final_preset.append({
             'id': light_id,
             'on': False,

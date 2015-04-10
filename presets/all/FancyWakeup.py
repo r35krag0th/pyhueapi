@@ -36,18 +36,6 @@ if __name__ == '__main__':
         {'id': 8, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': bottomFadeTime},
         {'id': 9, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': middleFadeTime},
         {'id': 7, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-
-        {'id': 2,  'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 10, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 12, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-
-        {'id': 11, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 13, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 14, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-
-        {'id': 15, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 16, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
-        {'id': 17, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': topFadeTime},
     ]
 
     preset2 = [
@@ -62,17 +50,6 @@ if __name__ == '__main__':
         {'id': 7, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
         {'id': 8, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': bottomFadeTime},
         {'id': 9, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': middleFadeTime},
-
-        {'id': 10, 'on': True, 'bri': 10, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-
-        {'id': 11, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 12, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 13, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 14, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-
-        {'id': 15, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 16, 'on': True, 'bri': 50, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 17, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
     ]
 
 
@@ -90,23 +67,6 @@ if __name__ == '__main__':
         {'id': 8,  'on': True, 'bri': 100, 'ct': 156, 'transitiontime': bottomFadeTime},
         {'id': 9,  'on': True, 'bri': 100, 'ct': 156, 'transitiontime': middleFadeTime},
         {'id': 7,  'on': True, 'bri': 100, 'ct': 156, 'transitiontime': topFadeTime},
-
-        # Living Room Lamp
-        {'id': 2,  'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-        {'id': 10, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-        {'id': 12, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-
-        # Living Room Single Lamps
-        {'id': 11, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-        {'id': 13, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-        {'id': 14, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-
-        # Dining Room Lights
-        {'id': 15, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-        {'id': 16, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
-
-        # Coffee Table
-        {'id': 16, 'on': True, 'bri': 100, 'ct': 340, 'transitiontime': topFadeTime},
     ]
 
     preset = [
