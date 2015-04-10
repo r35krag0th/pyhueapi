@@ -22,7 +22,7 @@ if __name__ == '__main__':
     topFadeTime *= 1000
 
     preset0 = []
-    for i in range(1,18):
+    for i in [1,3,4,5,6,7,8,9]:
         preset0.append({'id': i, 'on': True, 'bri': 10, 'xy': [0.674, 0.322], 'transitiontime': 0})
 
     preset1 = [
@@ -40,7 +40,6 @@ if __name__ == '__main__':
 
     preset2 = [
         {'id': 1, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
-        {'id': 2, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
         {'id': 3, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': topFadeTime},
 
         {'id': 4, 'on': True, 'bri': 100, 'xy': [0.5576, 0.4074], 'transitiontime': bottomFadeTime},
