@@ -9,7 +9,7 @@ import pyhueapi
 from pyhueapi.preset import Preset
 from time import sleep
 import requests
-from pyhueapi import irc_notification
+from pyhueapi import hipchat_notification
 
 def make_request(api_key=None, api_section=None):
     if None == api_key: api_key = '46806c0b6a4c2067'

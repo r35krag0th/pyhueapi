@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..',
 
 import pyhueapi
 from pyhueapi.preset import Preset
-from pyhueapi import irc_notification
+from pyhueapi import hipchat_notification
 
 if __name__ == '__main__':
     target_preset = Preset()
@@ -50,5 +50,5 @@ if __name__ == '__main__':
             ]
     target_preset.define_preset(final_preset)
 
-    irc_notification.send_preset('Entry', 'all')
+    hipchat_notification.send_preset('Entry', 'all')
     target_preset.execute()

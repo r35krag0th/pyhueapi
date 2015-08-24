@@ -24,3 +24,7 @@ def compute_brightness_from_percentage(target_brightness_percent):
         sys.exit(1)
 
     return int(255 * (target_brightness_percent / 100.0))
+
+def kelvin_to_ct(a_temp_kelvin):
+    return round(1000000/a_temp_kelvin, 0)
+
