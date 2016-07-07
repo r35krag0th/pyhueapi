@@ -102,6 +102,7 @@ class Preset(object):
         try:
             utils.make_changes(self.preset_details, self.forced_to_run)
         except Exception, e:
+            # print "Failed: %s" % e.message
             pass
 
     def to_string(self):

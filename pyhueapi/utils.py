@@ -8,14 +8,20 @@ def make_changes(preset, force=False):
 
     lights = Lights()
     for i in preset:
+        # print i
         tmp = lights.get(i['id'])
+
+        # print tmp
         if None == tmp: continue
 
         data = i
         data.pop('id')
         try:
+            # tmp._print()
             tmp.bulkSetState(data)
+            # tmp._print()
         except Exception, e:
+            print "[Utils] Failed: %s" % e.message
             pass
 
 def compute_brightness_from_percentage(target_brightness_percent):

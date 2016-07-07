@@ -20,6 +20,7 @@ class Lights(HueAPIBase):
             light = Light(lightId, response)
             return light
         except Exception, e:
+            print "[Lights] Failed: %s" % e.message
             return None
 
     # Get the result of the last search for new lights

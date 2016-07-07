@@ -2,6 +2,7 @@
 
 import requests, json, sys, os
 from time import sleep
+from pprint import pprint
 
 class HueAPIBase(object):
     targetBridge = 'hue.r35.private'
@@ -92,7 +93,7 @@ class Light(HueAPIBase):
         self.name = jsonData['name']
         self.modelId = jsonData['modelid']
         self.swVersion = jsonData['swversion']
-        self.pointSymbol = jsonData['pointsymbol']
+        self.pointSymbol = jsonData['pointsymbol'] if 'pointsymbol' in jsonData.keys() else None
 
     def isOn(self):
         return self.state.on == True
@@ -420,5 +421,15 @@ if __name__ == '__main__':
     for light_id in collected_lights_keys:
         # print light_id
         collected_lights[light_id]._print_preset()
+
+    print "=" * 80
+
+
+    print ""
+    print "Groups"
+    print "=" * 80
+    b = Groups()
+    for group_id, group_info in b.getAll().iteritems():
+        print "%s - %s" % (group_id, group_info['name'])
 
     sys.exit(0)
